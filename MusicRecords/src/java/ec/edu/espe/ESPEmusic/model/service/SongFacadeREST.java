@@ -5,8 +5,8 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
-import ec.edu.espe.ESPEmusic.model.Cancion;
-import ec.edu.espe.ESPEmusic.model.CancionPK;
+import ec.edu.espe.ESPEmusic.model.Song;
+import ec.edu.espe.ESPEmusic.model.SongPK;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,7 +28,7 @@ import javax.ws.rs.core.PathSegment;
  */
 @Stateless
 @Path("song-recordMusic")
-public class CancionFacadeREST{// extends AbstractFacade<Cancion> {
+public class SongFacadeREST{// extends AbstractFacade<Cancion> {
 
     @GET
     @Path("song")
@@ -39,7 +39,7 @@ public class CancionFacadeREST{// extends AbstractFacade<Cancion> {
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;
 //
-//    private CancionPK getPrimaryKey(PathSegment pathSegment) {
+//    private SongPK getPrimaryKey(PathSegment pathSegment) {
 //        /*
 //         * pathSemgent represents a URI path segment and any associated matrix parameters.
 //         * URI path part is supposed to be in form of 'somePath;codigoMusico=codigoMusicoValue;codigoBanda=codigoBandaValue;codigoCancion=codigoCancionValue'.
@@ -47,7 +47,7 @@ public class CancionFacadeREST{// extends AbstractFacade<Cancion> {
 //         * it is ignored in the following code.
 //         * Matrix parameters are used as field names to build a primary key instance.
 //         */
-//        ec.edu.espe.ESPEmusic.model.CancionPK key = new ec.edu.espe.ESPEmusic.model.CancionPK();
+//        ec.edu.espe.ESPEmusic.model.SongPK key = new ec.edu.espe.ESPEmusic.model.SongPK();
 //        javax.ws.rs.core.MultivaluedMap<String, String> map = pathSegment.getMatrixParameters();
 //        java.util.List<String> codigoMusico = map.get("codigoMusico");
 //        if (codigoMusico != null && !codigoMusico.isEmpty()) {
@@ -64,36 +64,36 @@ public class CancionFacadeREST{// extends AbstractFacade<Cancion> {
 //        return key;
 //    }
 //
-//    public CancionFacadeREST() {
-//        super(Cancion.class);
+//    public SongFacadeREST() {
+//        super(Song.class);
 //    }
 //
 //    @POST
 //    @Override
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void create(Cancion entity) {
+//    public void create(Song entity) {
 //        super.create(entity);
 //    }
 //
 //    @PUT
 //    @Path("{id}")
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void edit(@PathParam("id") PathSegment id, Cancion entity) {
+//    public void edit(@PathParam("id") PathSegment id, Song entity) {
 //        super.edit(entity);
 //    }
 //
 //    @DELETE
 //    @Path("{id}")
 //    public void remove(@PathParam("id") PathSegment id) {
-//        ec.edu.espe.ESPEmusic.model.CancionPK key = getPrimaryKey(id);
+//        ec.edu.espe.ESPEmusic.model.SongPK key = getPrimaryKey(id);
 //        super.remove(super.find(key));
 //    }
 //
 //    @GET
 //    @Path("{id}")
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public Cancion find(@PathParam("id") PathSegment id) {
-//        ec.edu.espe.ESPEmusic.model.CancionPK key = getPrimaryKey(id);
+//    public Song find(@PathParam("id") PathSegment id) {
+//        ec.edu.espe.ESPEmusic.model.SongPK key = getPrimaryKey(id);
 //        return super.find(key);
 //    }
 //

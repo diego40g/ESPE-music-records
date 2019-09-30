@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "AdministradorRecordMusic.findByNombreAdmin", query = "SELECT a FROM AdministradorRecordMusic a WHERE a.nombreAdmin = :nombreAdmin")
     , @NamedQuery(name = "AdministradorRecordMusic.findByEmailAdmin", query = "SELECT a FROM AdministradorRecordMusic a WHERE a.emailAdmin = :emailAdmin")
     , @NamedQuery(name = "AdministradorRecordMusic.findByTelefonoAdmin", query = "SELECT a FROM AdministradorRecordMusic a WHERE a.telefonoAdmin = :telefonoAdmin")})
-public class AdministradorRecordMusic implements Serializable {
+public class AdministratorRecordMusic implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,14 +54,14 @@ public class AdministradorRecordMusic implements Serializable {
     @OneToMany(mappedBy = "codigoAdmin")
     private Collection<Manager> managerCollection;
 
-    public AdministradorRecordMusic() {
+    public AdministratorRecordMusic() {
     }
 
-    public AdministradorRecordMusic(String codigoAdmin) {
+    public AdministratorRecordMusic(String codigoAdmin) {
         this.codigoAdmin = codigoAdmin;
     }
 
-    public AdministradorRecordMusic(String codigoAdmin, String apellidoAdmin, String nombreAdmin, String emailAdmin, String telefonoAdmin) {
+    public AdministratorRecordMusic(String codigoAdmin, String apellidoAdmin, String nombreAdmin, String emailAdmin, String telefonoAdmin) {
         this.codigoAdmin = codigoAdmin;
         this.apellidoAdmin = apellidoAdmin;
         this.nombreAdmin = nombreAdmin;
@@ -128,10 +128,10 @@ public class AdministradorRecordMusic implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AdministradorRecordMusic)) {
+        if (!(object instanceof AdministratorRecordMusic)) {
             return false;
         }
-        AdministradorRecordMusic other = (AdministradorRecordMusic) object;
+        AdministratorRecordMusic other = (AdministratorRecordMusic) object;
         if ((this.codigoAdmin == null && other.codigoAdmin != null) || (this.codigoAdmin != null && !this.codigoAdmin.equals(other.codigoAdmin))) {
             return false;
         }

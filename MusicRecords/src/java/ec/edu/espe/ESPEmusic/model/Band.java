@@ -35,11 +35,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Banda.findByNombreBanda", query = "SELECT b FROM Banda b WHERE b.nombreBanda = :nombreBanda")
     , @NamedQuery(name = "Banda.findByNumeroIntegrantes", query = "SELECT b FROM Banda b WHERE b.numeroIntegrantes = :numeroIntegrantes")
     , @NamedQuery(name = "Banda.findByGeneroBanda", query = "SELECT b FROM Banda b WHERE b.generoBanda = :generoBanda")})
-public class Banda implements Serializable {
+public class Band implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected BandaPK bandaPK;
+    protected BandPK bandaPK;
     @Basic(optional = false)
     @Column(name = "NOMBRE_BANDA")
     private String nombreBanda;
@@ -52,32 +52,32 @@ public class Banda implements Serializable {
     private Collection<Manager> managerCollection;
     @JoinColumn(name = "CODIGO_MUSICO", referencedColumnName = "CODIGO_MUSICO", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private MiembrosBanda miembrosBanda;
+    private MembersBand miembrosBanda;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "banda")
-    private Collection<Cancion> cancionCollection;
+    private Collection<Song> cancionCollection;
 
-    public Banda() {
+    public Band() {
     }
 
-    public Banda(BandaPK bandaPK) {
+    public Band(BandPK bandaPK) {
         this.bandaPK = bandaPK;
     }
 
-    public Banda(BandaPK bandaPK, String nombreBanda, String generoBanda) {
+    public Band(BandPK bandaPK, String nombreBanda, String generoBanda) {
         this.bandaPK = bandaPK;
         this.nombreBanda = nombreBanda;
         this.generoBanda = generoBanda;
     }
 
-    public Banda(String codigoMusico, String codigoBanda) {
-        this.bandaPK = new BandaPK(codigoMusico, codigoBanda);
+    public Band(String codigoMusico, String codigoBanda) {
+        this.bandaPK = new BandPK(codigoMusico, codigoBanda);
     }
 
-    public BandaPK getBandaPK() {
+    public BandPK getBandaPK() {
         return bandaPK;
     }
 
-    public void setBandaPK(BandaPK bandaPK) {
+    public void setBandaPK(BandPK bandaPK) {
         this.bandaPK = bandaPK;
     }
 
@@ -114,20 +114,20 @@ public class Banda implements Serializable {
         this.managerCollection = managerCollection;
     }
 
-    public MiembrosBanda getMiembrosBanda() {
+    public MembersBand getMiembrosBanda() {
         return miembrosBanda;
     }
 
-    public void setMiembrosBanda(MiembrosBanda miembrosBanda) {
+    public void setMiembrosBanda(MembersBand miembrosBanda) {
         this.miembrosBanda = miembrosBanda;
     }
 
     @XmlTransient
-    public Collection<Cancion> getCancionCollection() {
+    public Collection<Song> getCancionCollection() {
         return cancionCollection;
     }
 
-    public void setCancionCollection(Collection<Cancion> cancionCollection) {
+    public void setCancionCollection(Collection<Song> cancionCollection) {
         this.cancionCollection = cancionCollection;
     }
 
@@ -141,10 +141,10 @@ public class Banda implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Banda)) {
+        if (!(object instanceof Band)) {
             return false;
         }
-        Banda other = (Banda) object;
+        Band other = (Band) object;
         if ((this.bandaPK == null && other.bandaPK != null) || (this.bandaPK != null && !this.bandaPK.equals(other.bandaPK))) {
             return false;
         }

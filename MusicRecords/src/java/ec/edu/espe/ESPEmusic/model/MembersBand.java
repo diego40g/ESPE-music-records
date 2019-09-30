@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "MiembrosBanda.findByCargo", query = "SELECT m FROM MiembrosBanda m WHERE m.cargo = :cargo")
     , @NamedQuery(name = "MiembrosBanda.findByEmail", query = "SELECT m FROM MiembrosBanda m WHERE m.email = :email")
     , @NamedQuery(name = "MiembrosBanda.findByTelefono", query = "SELECT m FROM MiembrosBanda m WHERE m.telefono = :telefono")})
-public class MiembrosBanda implements Serializable {
+public class MembersBand implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,16 +57,16 @@ public class MiembrosBanda implements Serializable {
     @Column(name = "TELEFONO")
     private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "miembrosBanda")
-    private Collection<Banda> bandaCollection;
+    private Collection<Band> bandaCollection;
 
-    public MiembrosBanda() {
+    public MembersBand() {
     }
 
-    public MiembrosBanda(String codigoMusico) {
+    public MembersBand(String codigoMusico) {
         this.codigoMusico = codigoMusico;
     }
 
-    public MiembrosBanda(String codigoMusico, String apellido, String nombre, String cargo, String email, String telefono) {
+    public MembersBand(String codigoMusico, String apellido, String nombre, String cargo, String email, String telefono) {
         this.codigoMusico = codigoMusico;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -124,11 +124,11 @@ public class MiembrosBanda implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Banda> getBandaCollection() {
+    public Collection<Band> getBandaCollection() {
         return bandaCollection;
     }
 
-    public void setBandaCollection(Collection<Banda> bandaCollection) {
+    public void setBandaCollection(Collection<Band> bandaCollection) {
         this.bandaCollection = bandaCollection;
     }
 
@@ -142,10 +142,10 @@ public class MiembrosBanda implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MiembrosBanda)) {
+        if (!(object instanceof MembersBand)) {
             return false;
         }
-        MiembrosBanda other = (MiembrosBanda) object;
+        MembersBand other = (MembersBand) object;
         if ((this.codigoMusico == null && other.codigoMusico != null) || (this.codigoMusico != null && !this.codigoMusico.equals(other.codigoMusico))) {
             return false;
         }

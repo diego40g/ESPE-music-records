@@ -5,8 +5,8 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
-import ec.edu.espe.ESPEmusic.model.Banda;
-import ec.edu.espe.ESPEmusic.model.BandaPK;
+import ec.edu.espe.ESPEmusic.model.Band;
+import ec.edu.espe.ESPEmusic.model.BandPK;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,7 +28,7 @@ import javax.ws.rs.core.PathSegment;
  */
 @Stateless
 @Path("band-recordMusic")
-public class BandaFacadeREST{// extends AbstractFacade<Banda> {
+public class BandFacadeREST{// extends AbstractFacade<Banda> {
 
     @GET
     @Path("band")
@@ -39,7 +39,7 @@ public class BandaFacadeREST{// extends AbstractFacade<Banda> {
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;
 //
-//    private BandaPK getPrimaryKey(PathSegment pathSegment) {
+//    private BandPK getPrimaryKey(PathSegment pathSegment) {
 //        /*
 //         * pathSemgent represents a URI path segment and any associated matrix parameters.
 //         * URI path part is supposed to be in form of 'somePath;codigoMusico=codigoMusicoValue;codigoBanda=codigoBandaValue'.
@@ -47,7 +47,7 @@ public class BandaFacadeREST{// extends AbstractFacade<Banda> {
 //         * it is ignored in the following code.
 //         * Matrix parameters are used as field names to build a primary key instance.
 //         */
-//        ec.edu.espe.ESPEmusic.model.BandaPK key = new ec.edu.espe.ESPEmusic.model.BandaPK();
+//        ec.edu.espe.ESPEmusic.model.BandPK key = new ec.edu.espe.ESPEmusic.model.BandPK();
 //        javax.ws.rs.core.MultivaluedMap<String, String> map = pathSegment.getMatrixParameters();
 //        java.util.List<String> codigoMusico = map.get("codigoMusico");
 //        if (codigoMusico != null && !codigoMusico.isEmpty()) {
@@ -60,36 +60,36 @@ public class BandaFacadeREST{// extends AbstractFacade<Banda> {
 //        return key;
 //    }
 //
-//    public BandaFacadeREST() {
-//        super(Banda.class);
+//    public BandFacadeREST() {
+//        super(Band.class);
 //    }
 //
 //    @POST
 //    @Override
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void create(Banda entity) {
+//    public void create(Band entity) {
 //        super.create(entity);
 //    }
 //
 //    @PUT
 //    @Path("{id}")
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void edit(@PathParam("id") PathSegment id, Banda entity) {
+//    public void edit(@PathParam("id") PathSegment id, Band entity) {
 //        super.edit(entity);
 //    }
 //
 //    @DELETE
 //    @Path("{id}")
 //    public void remove(@PathParam("id") PathSegment id) {
-//        ec.edu.espe.ESPEmusic.model.BandaPK key = getPrimaryKey(id);
+//        ec.edu.espe.ESPEmusic.model.BandPK key = getPrimaryKey(id);
 //        super.remove(super.find(key));
 //    }
 //
 //    @GET
 //    @Path("{id}")
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public Banda find(@PathParam("id") PathSegment id) {
-//        ec.edu.espe.ESPEmusic.model.BandaPK key = getPrimaryKey(id);
+//    public Band find(@PathParam("id") PathSegment id) {
+//        ec.edu.espe.ESPEmusic.model.BandPK key = getPrimaryKey(id);
 //        return super.find(key);
 //    }
 //

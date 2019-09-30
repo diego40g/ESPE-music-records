@@ -15,7 +15,7 @@ import javax.persistence.Embeddable;
  * @author Pc
  */
 @Embeddable
-public class CancionPK implements Serializable {
+public class BandPK implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "CODIGO_MUSICO")
@@ -23,17 +23,13 @@ public class CancionPK implements Serializable {
     @Basic(optional = false)
     @Column(name = "CODIGO_BANDA")
     private String codigoBanda;
-    @Basic(optional = false)
-    @Column(name = "CODIGO_CANCION")
-    private String codigoCancion;
 
-    public CancionPK() {
+    public BandPK() {
     }
 
-    public CancionPK(String codigoMusico, String codigoBanda, String codigoCancion) {
+    public BandPK(String codigoMusico, String codigoBanda) {
         this.codigoMusico = codigoMusico;
         this.codigoBanda = codigoBanda;
-        this.codigoCancion = codigoCancion;
     }
 
     public String getCodigoMusico() {
@@ -52,37 +48,25 @@ public class CancionPK implements Serializable {
         this.codigoBanda = codigoBanda;
     }
 
-    public String getCodigoCancion() {
-        return codigoCancion;
-    }
-
-    public void setCodigoCancion(String codigoCancion) {
-        this.codigoCancion = codigoCancion;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (codigoMusico != null ? codigoMusico.hashCode() : 0);
         hash += (codigoBanda != null ? codigoBanda.hashCode() : 0);
-        hash += (codigoCancion != null ? codigoCancion.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CancionPK)) {
+        if (!(object instanceof BandPK)) {
             return false;
         }
-        CancionPK other = (CancionPK) object;
+        BandPK other = (BandPK) object;
         if ((this.codigoMusico == null && other.codigoMusico != null) || (this.codigoMusico != null && !this.codigoMusico.equals(other.codigoMusico))) {
             return false;
         }
         if ((this.codigoBanda == null && other.codigoBanda != null) || (this.codigoBanda != null && !this.codigoBanda.equals(other.codigoBanda))) {
-            return false;
-        }
-        if ((this.codigoCancion == null && other.codigoCancion != null) || (this.codigoCancion != null && !this.codigoCancion.equals(other.codigoCancion))) {
             return false;
         }
         return true;
@@ -90,7 +74,7 @@ public class CancionPK implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.ESPEmusic.model.CancionPK[ codigoMusico=" + codigoMusico + ", codigoBanda=" + codigoBanda + ", codigoCancion=" + codigoCancion + " ]";
+        return "ec.edu.espe.ESPEmusic.model.BandaPK[ codigoMusico=" + codigoMusico + ", codigoBanda=" + codigoBanda + " ]";
     }
     
 }

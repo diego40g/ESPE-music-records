@@ -5,11 +5,8 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
-import ec.edu.espe.ESPEmusic.connection.Querys;
-import ec.edu.espe.ESPEmusic.model.AdministradorRecordMusic;
+import ec.edu.espe.ESPEmusic.model.MembersBand;
 import java.util.List;
-import javax.annotation.PreDestroy;
-import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,35 +25,33 @@ import javax.ws.rs.core.MediaType;
  * @author Pc
  */
 @Stateless
-@Path("administrator-recordMusic")
-public class AdministradorRecordMusicFacadeREST{// extends AbstractFacade<AdministradorRecordMusic> {
+@Path("membersBand-recordMusic")
+public class MembersBandFacadeREST{// extends AbstractFacade<MiembrosBanda> {
 
-    Querys query = new  Querys();
     @GET
-    @Path("allAdministrator")
+    @Path("membersBand")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<AdministradorRecordMusic> getAllAdmin() {
-        return query.consultaAdminJSON();
+    public String getAllAdmin() {
+        return "Members Band";
     }
-    
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;
-
-//    public AdministradorRecordMusicFacadeREST() {
-//        super(AdministradorRecordMusic.class);
+//
+//    public MembersBandFacadeREST() {
+//        super(MembersBand.class);
 //    }
 //
 //    @POST
 //    @Override
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void create(AdministradorRecordMusic entity) {
+//    public void create(MembersBand entity) {
 //        super.create(entity);
 //    }
 //
 //    @PUT
 //    @Path("{id}")
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void edit(@PathParam("id") String id, AdministradorRecordMusic entity) {
+//    public void edit(@PathParam("id") String id, MembersBand entity) {
 //        super.edit(entity);
 //    }
 //
@@ -69,21 +64,21 @@ public class AdministradorRecordMusicFacadeREST{// extends AbstractFacade<Admini
 //    @GET
 //    @Path("{id}")
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public AdministradorRecordMusic find(@PathParam("id") String id) {
+//    public MembersBand find(@PathParam("id") String id) {
 //        return super.find(id);
 //    }
 //
 //    @GET
 //    @Override
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<AdministradorRecordMusic> findAll() {
+//    public List<MiembrosBanda> findAll() {
 //        return super.findAll();
 //    }
 //
 //    @GET
 //    @Path("{from}/{to}")
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<AdministradorRecordMusic> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+//    public List<MiembrosBanda> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
 //        return super.findRange(new int[]{from, to});
 //    }
 //
@@ -98,5 +93,5 @@ public class AdministradorRecordMusicFacadeREST{// extends AbstractFacade<Admini
 //    protected EntityManager getEntityManager() {
 //        return em;
 //    }
-    
+//    
 }
