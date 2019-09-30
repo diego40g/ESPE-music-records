@@ -36,7 +36,7 @@ public class Querys {
         listSong = new ArrayList<Song>();
         listAlbum = new ArrayList<Album>();
         listManager = new ArrayList<Manager>();
-        listMembersBand = null;
+        listMembersBand = new ArrayList<MembersBand>();
     }
     
     public List<AdministratorRecordMusic> allAdmin(){
