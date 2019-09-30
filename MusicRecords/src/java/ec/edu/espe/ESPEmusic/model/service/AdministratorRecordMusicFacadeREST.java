@@ -5,8 +5,11 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
-import ec.edu.espe.ESPEmusic.model.Album;
+import ec.edu.espe.ESPEmusic.connection.Querys;
+import ec.edu.espe.ESPEmusic.model.AdministratorRecordMusic;
 import java.util.List;
+import javax.annotation.PreDestroy;
+import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,33 +28,36 @@ import javax.ws.rs.core.MediaType;
  * @author Pc
  */
 @Stateless
-@Path("album-recordMusic")
-public class AlbumFacadeREST{// extends AbstractFacade<Album> {
+@Path("administrator-recordMusic")
+public class AdministratorRecordMusicFacadeREST{// extends AbstractFacade<AdministradorRecordMusic> {
 
+    Querys query = new  Querys();
+    
     @GET
-    @Path("album")
+    @Path("allAdministrator")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAllAdmin() {
-        return "Album";
+    public List<AdministratorRecordMusic> getAllAdmin() {
+        return query.allAdmin();
     }
+    
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;
-//
-//    public AlbumFacadeREST() {
-//        super(Album.class);
+
+//    public AdministratorRecordMusicFacadeREST() {
+//        super(AdministratorRecordMusic.class);
 //    }
 //
 //    @POST
 //    @Override
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void create(Album entity) {
+//    public void create(AdministratorRecordMusic entity) {
 //        super.create(entity);
 //    }
 //
 //    @PUT
 //    @Path("{id}")
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void edit(@PathParam("id") String id, Album entity) {
+//    public void edit(@PathParam("id") String id, AdministratorRecordMusic entity) {
 //        super.edit(entity);
 //    }
 //
@@ -64,21 +70,21 @@ public class AlbumFacadeREST{// extends AbstractFacade<Album> {
 //    @GET
 //    @Path("{id}")
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public Album find(@PathParam("id") String id) {
+//    public AdministratorRecordMusic find(@PathParam("id") String id) {
 //        return super.find(id);
 //    }
 //
 //    @GET
 //    @Override
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<Album> findAll() {
+//    public List<AdministradorRecordMusic> findAll() {
 //        return super.findAll();
 //    }
 //
 //    @GET
 //    @Path("{from}/{to}")
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<Album> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+//    public List<AdministradorRecordMusic> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
 //        return super.findRange(new int[]{from, to});
 //    }
 //

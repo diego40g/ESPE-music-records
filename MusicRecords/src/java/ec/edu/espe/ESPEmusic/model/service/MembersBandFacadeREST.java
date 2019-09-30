@@ -5,7 +5,8 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
-import ec.edu.espe.ESPEmusic.model.Album;
+import ec.edu.espe.ESPEmusic.connection.Querys;
+import ec.edu.espe.ESPEmusic.model.MembersBand;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,33 +26,35 @@ import javax.ws.rs.core.MediaType;
  * @author Pc
  */
 @Stateless
-@Path("album-recordMusic")
-public class AlbumFacadeREST{// extends AbstractFacade<Album> {
-
+@Path("membersBand-recordMusic")
+public class MembersBandFacadeREST{// extends AbstractFacade<MiembrosBanda> {
+    
+    Querys query = new  Querys();
+    
     @GET
-    @Path("album")
+    @Path("membersByBand/{band}")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAllAdmin() {
-        return "Album";
+    public List<MembersBand> getAllAdmin(@PathParam("band") String band) {
+        return query.membersOfBand(band);
     }
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;
 //
-//    public AlbumFacadeREST() {
-//        super(Album.class);
+//    public MembersBandFacadeREST() {
+//        super(MembersBand.class);
 //    }
 //
 //    @POST
 //    @Override
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void create(Album entity) {
+//    public void create(MembersBand entity) {
 //        super.create(entity);
 //    }
 //
 //    @PUT
 //    @Path("{id}")
 //    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void edit(@PathParam("id") String id, Album entity) {
+//    public void edit(@PathParam("id") String id, MembersBand entity) {
 //        super.edit(entity);
 //    }
 //
@@ -64,21 +67,21 @@ public class AlbumFacadeREST{// extends AbstractFacade<Album> {
 //    @GET
 //    @Path("{id}")
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public Album find(@PathParam("id") String id) {
+//    public MembersBand find(@PathParam("id") String id) {
 //        return super.find(id);
 //    }
 //
 //    @GET
 //    @Override
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<Album> findAll() {
+//    public List<MiembrosBanda> findAll() {
 //        return super.findAll();
 //    }
 //
 //    @GET
 //    @Path("{from}/{to}")
 //    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<Album> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+//    public List<MiembrosBanda> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
 //        return super.findRange(new int[]{from, to});
 //    }
 //
@@ -93,5 +96,5 @@ public class AlbumFacadeREST{// extends AbstractFacade<Album> {
 //    protected EntityManager getEntityManager() {
 //        return em;
 //    }
-    
+//    
 }

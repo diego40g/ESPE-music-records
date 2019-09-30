@@ -55,7 +55,7 @@ public class Album implements Serializable {
         , @JoinColumn(name = "CODIGO_BANDA", referencedColumnName = "CODIGO_BANDA")
         , @JoinColumn(name = "CODIGO_CANCION", referencedColumnName = "CODIGO_CANCION")})
     @ManyToMany
-    private Collection<Cancion> cancionCollection;
+    private Collection<Song> cancionCollection;
 
     public Album() {
     }
@@ -104,11 +104,11 @@ public class Album implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Cancion> getCancionCollection() {
+    public Collection<Song> getCancionCollection() {
         return cancionCollection;
     }
 
-    public void setCancionCollection(Collection<Cancion> cancionCollection) {
+    public void setCancionCollection(Collection<Song> cancionCollection) {
         this.cancionCollection = cancionCollection;
     }
 

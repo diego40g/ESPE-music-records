@@ -12,7 +12,7 @@ import javax.ws.rs.core.Application;
  *
  * @author Pc
  */
-@javax.ws.rs.ApplicationPath("webresources")
+@javax.ws.rs.ApplicationPath("espeMusic")
 public class ApplicationConfig extends Application {
 
     @Override
@@ -29,12 +29,13 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(ec.edu.espe.ESPEmusic.model.service.AdministradorRecordMusicFacadeREST.class);
+        resources.add(ec.edu.espe.ESPEmusic.model.SongResource.class);
+        resources.add(ec.edu.espe.ESPEmusic.model.service.AdministratorRecordMusicFacadeREST.class);
         resources.add(ec.edu.espe.ESPEmusic.model.service.AlbumFacadeREST.class);
-        resources.add(ec.edu.espe.ESPEmusic.model.service.BandaFacadeREST.class);
-        resources.add(ec.edu.espe.ESPEmusic.model.service.CancionFacadeREST.class);
+        resources.add(ec.edu.espe.ESPEmusic.model.service.BandFacadeREST.class);
         resources.add(ec.edu.espe.ESPEmusic.model.service.ManagerFacadeREST.class);
-        resources.add(ec.edu.espe.ESPEmusic.model.service.MiembrosBandaFacadeREST.class);
+        resources.add(ec.edu.espe.ESPEmusic.model.service.MembersBandFacadeREST.class);
+        resources.add(ec.edu.espe.ESPEmusic.model.service.SongFacadeREST.class);
     }
     
 }

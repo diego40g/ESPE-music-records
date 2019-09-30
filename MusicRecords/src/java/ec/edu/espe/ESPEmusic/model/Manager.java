@@ -53,12 +53,12 @@ public class Manager implements Serializable {
     private String telefonoManager;
     @JoinColumn(name = "CODIGO_ADMIN", referencedColumnName = "CODIGO_ADMIN")
     @ManyToOne
-    private AdministradorRecordMusic codigoAdmin;
+    private AdministratorRecordMusic codigoAdmin;
     @JoinColumns({
         @JoinColumn(name = "CODIGO_MUSICO", referencedColumnName = "CODIGO_MUSICO")
         , @JoinColumn(name = "CODIGO_BANDA", referencedColumnName = "CODIGO_BANDA")})
     @ManyToOne
-    private Banda banda;
+    private Band banda;
 
     public Manager() {
     }
@@ -115,19 +115,19 @@ public class Manager implements Serializable {
         this.telefonoManager = telefonoManager;
     }
 
-    public AdministradorRecordMusic getCodigoAdmin() {
+    public AdministratorRecordMusic getCodigoAdmin() {
         return codigoAdmin;
     }
 
-    public void setCodigoAdmin(AdministradorRecordMusic codigoAdmin) {
+    public void setCodigoAdmin(AdministratorRecordMusic codigoAdmin) {
         this.codigoAdmin = codigoAdmin;
     }
 
-    public Banda getBanda() {
+    public Band getBanda() {
         return banda;
     }
 
-    public void setBanda(Banda banda) {
+    public void setBanda(Band banda) {
         this.banda = banda;
     }
 
