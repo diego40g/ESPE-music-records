@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
+import ec.edu.espe.ESPEmusic.connection.Querys;
 import ec.edu.espe.ESPEmusic.model.Album;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -28,11 +29,13 @@ import javax.ws.rs.core.MediaType;
 @Path("album-recordMusic")
 public class AlbumFacadeREST{// extends AbstractFacade<Album> {
 
+    Querys query = new  Querys();
+    
     @GET
-    @Path("album")
+    @Path("allAlbum")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAllAdmin() {
-        return "Album";
+    public List<Album> getAllAlbum() {
+        return query.allAlbum();
     }
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;

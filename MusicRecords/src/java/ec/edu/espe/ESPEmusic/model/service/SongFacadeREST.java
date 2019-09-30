@@ -5,8 +5,9 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
+import ec.edu.espe.ESPEmusic.connection.Querys;
+import ec.edu.espe.ESPEmusic.model.Band;
 import ec.edu.espe.ESPEmusic.model.Song;
-import ec.edu.espe.ESPEmusic.model.SongPK;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,12 +31,29 @@ import javax.ws.rs.core.PathSegment;
 @Path("song-recordMusic")
 public class SongFacadeREST{// extends AbstractFacade<Cancion> {
 
+    Querys query = new  Querys();
+    
     @GET
-    @Path("song")
+    @Path("allSong")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAllAdmin() {
-        return "Song";
+    public List<Song> getAllSong() {
+        return query.allSong();
     }
+    
+    @GET
+    @Path("songByBand/{band}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Song> getMembersByBand(@PathParam("band") String band) {
+        return query.songByNameBand(band);
+    }
+    
+    @GET
+    @Path("bandBySong/{song}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<String> getBandBySong(@PathParam("song") String song) {
+        return query.bandBySong(song);
+    }
+    
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;
 //

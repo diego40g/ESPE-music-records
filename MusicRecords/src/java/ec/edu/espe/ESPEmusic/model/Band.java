@@ -26,83 +26,83 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Pc
  */
 @Entity
-@Table(name = "banda")
+@Table(name = "band")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Banda.findAll", query = "SELECT b FROM Banda b")
-    , @NamedQuery(name = "Banda.findByCodigoMusico", query = "SELECT b FROM Banda b WHERE b.bandaPK.codigoMusico = :codigoMusico")
-    , @NamedQuery(name = "Banda.findByCodigoBanda", query = "SELECT b FROM Banda b WHERE b.bandaPK.codigoBanda = :codigoBanda")
-    , @NamedQuery(name = "Banda.findByNombreBanda", query = "SELECT b FROM Banda b WHERE b.nombreBanda = :nombreBanda")
-    , @NamedQuery(name = "Banda.findByNumeroIntegrantes", query = "SELECT b FROM Banda b WHERE b.numeroIntegrantes = :numeroIntegrantes")
-    , @NamedQuery(name = "Banda.findByGeneroBanda", query = "SELECT b FROM Banda b WHERE b.generoBanda = :generoBanda")})
+    , @NamedQuery(name = "Banda.findByCodigoMusico", query = "SELECT b FROM Banda b WHERE b.bandPK.codigoMusico = :codigoMusico")
+    , @NamedQuery(name = "Banda.findByCodigoBanda", query = "SELECT b FROM Banda b WHERE b.bandPK.codigoBanda = :codigoBanda")
+    , @NamedQuery(name = "Banda.findByNombreBanda", query = "SELECT b FROM Banda b WHERE b.nameBand = :nameBand")
+    , @NamedQuery(name = "Banda.findByNumeroIntegrantes", query = "SELECT b FROM Banda b WHERE b.numberParticipants = :numberParticipants")
+    , @NamedQuery(name = "Banda.findByGeneroBanda", query = "SELECT b FROM Banda b WHERE b.genderBand = :genderBand")})
 public class Band implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected BandPK bandaPK;
+    protected BandPK bandPK;
     @Basic(optional = false)
-    @Column(name = "NOMBRE_BANDA")
-    private String nombreBanda;
-    @Column(name = "NUMERO_INTEGRANTES")
-    private Integer numeroIntegrantes;
+    @Column(name = "NAME_BAND")
+    private String nameBand;
+    @Column(name = "NUMBER_PARTICIPANTS")
+    private Integer numberParticipants;
     @Basic(optional = false)
-    @Column(name = "GENERO_BANDA")
-    private String generoBanda;
-    @OneToMany(mappedBy = "banda")
+    @Column(name = "GENDER_BAND")
+    private String genderBand;
+    @OneToMany(mappedBy = "band")
     private Collection<Manager> managerCollection;
-    @JoinColumn(name = "CODIGO_MUSICO", referencedColumnName = "CODIGO_MUSICO", insertable = false, updatable = false)
+    @JoinColumn(name = "CODE_MUSICAL", referencedColumnName = "CODE_MUSICAL", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private MembersBand miembrosBanda;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "banda")
+    private MembersBand membersBand;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "band")
     private Collection<Song> cancionCollection;
 
     public Band() {
     }
 
-    public Band(BandPK bandaPK) {
-        this.bandaPK = bandaPK;
+    public Band(BandPK bandPK) {
+        this.bandPK = bandPK;
     }
 
-    public Band(BandPK bandaPK, String nombreBanda, String generoBanda) {
-        this.bandaPK = bandaPK;
-        this.nombreBanda = nombreBanda;
-        this.generoBanda = generoBanda;
+    public Band(BandPK bandPK, String nameBand, String genderBand) {
+        this.bandPK = bandPK;
+        this.nameBand = nameBand;
+        this.genderBand = genderBand;
     }
 
     public Band(String codigoMusico, String codigoBanda) {
-        this.bandaPK = new BandPK(codigoMusico, codigoBanda);
+        this.bandPK = new BandPK(codigoMusico, codigoBanda);
     }
 
-    public BandPK getBandaPK() {
-        return bandaPK;
+    public BandPK getBandPK() {
+        return bandPK;
     }
 
-    public void setBandaPK(BandPK bandaPK) {
-        this.bandaPK = bandaPK;
+    public void setBandPK(BandPK bandPK) {
+        this.bandPK = bandPK;
     }
 
-    public String getNombreBanda() {
-        return nombreBanda;
+    public String getNameBand() {
+        return nameBand;
     }
 
-    public void setNombreBanda(String nombreBanda) {
-        this.nombreBanda = nombreBanda;
+    public void setNameBand(String nameBand) {
+        this.nameBand = nameBand;
     }
 
-    public Integer getNumeroIntegrantes() {
-        return numeroIntegrantes;
+    public Integer getNumberParticipants() {
+        return numberParticipants;
     }
 
-    public void setNumeroIntegrantes(Integer numeroIntegrantes) {
-        this.numeroIntegrantes = numeroIntegrantes;
+    public void setNumberParticipants(Integer numberParticipants) {
+        this.numberParticipants = numberParticipants;
     }
 
-    public String getGeneroBanda() {
-        return generoBanda;
+    public String getGenderBand() {
+        return genderBand;
     }
 
-    public void setGeneroBanda(String generoBanda) {
-        this.generoBanda = generoBanda;
+    public void setGenderBand(String genderBand) {
+        this.genderBand = genderBand;
     }
 
     @XmlTransient
@@ -115,11 +115,11 @@ public class Band implements Serializable {
     }
 
     public MembersBand getMiembrosBanda() {
-        return miembrosBanda;
+        return membersBand;
     }
 
-    public void setMiembrosBanda(MembersBand miembrosBanda) {
-        this.miembrosBanda = miembrosBanda;
+    public void setMembersBand(MembersBand membersBand) {
+        this.membersBand = membersBand;
     }
 
     @XmlTransient
@@ -134,7 +134,7 @@ public class Band implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (bandaPK != null ? bandaPK.hashCode() : 0);
+        hash += (bandPK != null ? bandPK.hashCode() : 0);
         return hash;
     }
 
@@ -145,7 +145,7 @@ public class Band implements Serializable {
             return false;
         }
         Band other = (Band) object;
-        if ((this.bandaPK == null && other.bandaPK != null) || (this.bandaPK != null && !this.bandaPK.equals(other.bandaPK))) {
+        if ((this.bandPK == null && other.bandPK != null) || (this.bandPK != null && !this.bandPK.equals(other.bandPK))) {
             return false;
         }
         return true;
@@ -153,7 +153,7 @@ public class Band implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.ESPEmusic.model.Banda[ bandaPK=" + bandaPK + " ]";
+        return "ec.edu.espe.ESPEmusic.model.Band[ bandPK=" + bandPK + " ]";
     }
     
 }

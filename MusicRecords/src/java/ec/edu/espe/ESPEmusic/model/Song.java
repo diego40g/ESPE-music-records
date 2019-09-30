@@ -33,83 +33,83 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cancion.findAll", query = "SELECT c FROM Cancion c")
-    , @NamedQuery(name = "Cancion.findByCodigoMusico", query = "SELECT c FROM Cancion c WHERE c.cancionPK.codigoMusico = :codigoMusico")
-    , @NamedQuery(name = "Cancion.findByCodigoBanda", query = "SELECT c FROM Cancion c WHERE c.cancionPK.codigoBanda = :codigoBanda")
-    , @NamedQuery(name = "Cancion.findByCodigoCancion", query = "SELECT c FROM Cancion c WHERE c.cancionPK.codigoCancion = :codigoCancion")
-    , @NamedQuery(name = "Cancion.findByNombreCancion", query = "SELECT c FROM Cancion c WHERE c.nombreCancion = :nombreCancion")
-    , @NamedQuery(name = "Cancion.findByDuracion", query = "SELECT c FROM Cancion c WHERE c.duracion = :duracion")
-    , @NamedQuery(name = "Cancion.findByGeneroCancion", query = "SELECT c FROM Cancion c WHERE c.generoCancion = :generoCancion")})
+    , @NamedQuery(name = "Cancion.findByCodigoMusico", query = "SELECT c FROM Cancion c WHERE c.songPK.codigoMusico = :codigoMusico")
+    , @NamedQuery(name = "Cancion.findByCodigoBanda", query = "SELECT c FROM Cancion c WHERE c.songPK.codigoBanda = :codigoBanda")
+    , @NamedQuery(name = "Cancion.findByCodigoCancion", query = "SELECT c FROM Cancion c WHERE c.songPK.codigoCancion = :codigoCancion")
+    , @NamedQuery(name = "Cancion.findByNombreCancion", query = "SELECT c FROM Cancion c WHERE c.nameSong = :nameSong")
+    , @NamedQuery(name = "Cancion.findByDuracion", query = "SELECT c FROM Cancion c WHERE c.duration = :duration")
+    , @NamedQuery(name = "Cancion.findByGeneroCancion", query = "SELECT c FROM Cancion c WHERE c.genderSong = :genderSong")})
 public class Song implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected SongPK cancionPK;
+    protected SongPK songPK;
     @Basic(optional = false)
-    @Column(name = "NOMBRE_CANCION")
-    private String nombreCancion;
+    @Column(name = "NAME_SONG")
+    private String nameSong;
     @Basic(optional = false)
-    @Column(name = "DURACION")
+    @Column(name = "DURATION")
     @Temporal(TemporalType.TIME)
-    private Date duracion;
+    private Date duration;
     @Basic(optional = false)
-    @Column(name = "GENERO_CANCION")
-    private String generoCancion;
+    @Column(name = "GENDER_SONG")
+    private String genderSong;
     @ManyToMany(mappedBy = "cancionCollection")
     private Collection<Album> albumCollection;
     @JoinColumns({
-        @JoinColumn(name = "CODIGO_MUSICO", referencedColumnName = "CODIGO_MUSICO", insertable = false, updatable = false)
-        , @JoinColumn(name = "CODIGO_BANDA", referencedColumnName = "CODIGO_BANDA", insertable = false, updatable = false)})
+        @JoinColumn(name = "CODE_MUSICAL", referencedColumnName = "CODE_MUSICAL", insertable = false, updatable = false)
+        , @JoinColumn(name = "CODE_BAND", referencedColumnName = "CODE_BAND", insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Band banda;
 
     public Song() {
     }
 
-    public Song(SongPK cancionPK) {
-        this.cancionPK = cancionPK;
+    public Song(SongPK songPK) {
+        this.songPK = songPK;
     }
 
-    public Song(SongPK cancionPK, String nombreCancion, Date duracion, String generoCancion) {
-        this.cancionPK = cancionPK;
-        this.nombreCancion = nombreCancion;
-        this.duracion = duracion;
-        this.generoCancion = generoCancion;
+    public Song(SongPK songPK, String nameSong, Date duration, String genderSong) {
+        this.songPK = songPK;
+        this.nameSong = nameSong;
+        this.duration = duration;
+        this.genderSong = genderSong;
     }
 
     public Song(String codigoMusico, String codigoBanda, String codigoCancion) {
-        this.cancionPK = new SongPK(codigoMusico, codigoBanda, codigoCancion);
+        this.songPK = new SongPK(codigoMusico, codigoBanda, codigoCancion);
     }
 
-    public SongPK getCancionPK() {
-        return cancionPK;
+    public SongPK getSongPK() {
+        return songPK;
     }
 
-    public void setCancionPK(SongPK cancionPK) {
-        this.cancionPK = cancionPK;
+    public void setSongPK(SongPK songPK) {
+        this.songPK = songPK;
     }
 
-    public String getNombreCancion() {
-        return nombreCancion;
+    public String getNameSong() {
+        return nameSong;
     }
 
-    public void setNombreCancion(String nombreCancion) {
-        this.nombreCancion = nombreCancion;
+    public void setNameSong(String nameSong) {
+        this.nameSong = nameSong;
     }
 
-    public Date getDuracion() {
-        return duracion;
+    public Date getDuration() {
+        return duration;
     }
 
-    public void setDuracion(Date duracion) {
-        this.duracion = duracion;
+    public void setDuration(Date duration) {
+        this.duration = duration;
     }
 
-    public String getGeneroCancion() {
-        return generoCancion;
+    public String getGenderSong() {
+        return genderSong;
     }
 
-    public void setGeneroCancion(String generoCancion) {
-        this.generoCancion = generoCancion;
+    public void setGenderSong(String genderSong) {
+        this.genderSong = genderSong;
     }
 
     @XmlTransient
@@ -121,18 +121,18 @@ public class Song implements Serializable {
         this.albumCollection = albumCollection;
     }
 
-    public Band getBanda() {
+    public Band getBand() {
         return banda;
     }
 
-    public void setBanda(Band banda) {
+    public void setBand(Band banda) {
         this.banda = banda;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (cancionPK != null ? cancionPK.hashCode() : 0);
+        hash += (songPK != null ? songPK.hashCode() : 0);
         return hash;
     }
 
@@ -143,7 +143,7 @@ public class Song implements Serializable {
             return false;
         }
         Song other = (Song) object;
-        if ((this.cancionPK == null && other.cancionPK != null) || (this.cancionPK != null && !this.cancionPK.equals(other.cancionPK))) {
+        if ((this.songPK == null && other.songPK != null) || (this.songPK != null && !this.songPK.equals(other.songPK))) {
             return false;
         }
         return true;
@@ -151,7 +151,7 @@ public class Song implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.ESPEmusic.model.Cancion[ cancionPK=" + cancionPK + " ]";
+        return "ec.edu.espe.ESPEmusic.model.Cancion[ songPK=" + songPK + " ]";
     }
     
 }

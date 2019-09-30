@@ -27,76 +27,76 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Manager.findAll", query = "SELECT m FROM Manager m")
-    , @NamedQuery(name = "Manager.findByCodigoManager", query = "SELECT m FROM Manager m WHERE m.codigoManager = :codigoManager")
-    , @NamedQuery(name = "Manager.findByApellidoManager", query = "SELECT m FROM Manager m WHERE m.apellidoManager = :apellidoManager")
-    , @NamedQuery(name = "Manager.findByNombreManager", query = "SELECT m FROM Manager m WHERE m.nombreManager = :nombreManager")
+    , @NamedQuery(name = "Manager.findByCodigoManager", query = "SELECT m FROM Manager m WHERE m.codeManager = :codeManager")
+    , @NamedQuery(name = "Manager.findByApellidoManager", query = "SELECT m FROM Manager m WHERE m.lastNameManager = :lastNameManager")
+    , @NamedQuery(name = "Manager.findByNombreManager", query = "SELECT m FROM Manager m WHERE m.nameManager = :nameManager")
     , @NamedQuery(name = "Manager.findByEmailManager", query = "SELECT m FROM Manager m WHERE m.emailManager = :emailManager")
-    , @NamedQuery(name = "Manager.findByTelefonoManager", query = "SELECT m FROM Manager m WHERE m.telefonoManager = :telefonoManager")})
+    , @NamedQuery(name = "Manager.findByTelefonoManager", query = "SELECT m FROM Manager m WHERE m.phoneManager = :phoneManager")})
 public class Manager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "CODIGO_MANAGER")
-    private String codigoManager;
+    @Column(name = "CODE_MANAGER")
+    private String codeManager;
     @Basic(optional = false)
-    @Column(name = "APELLIDO_MANAGER")
-    private String apellidoManager;
+    @Column(name = "LASTNAME_MANAGER")
+    private String lastNameManager;
     @Basic(optional = false)
-    @Column(name = "NOMBRE_MANAGER")
-    private String nombreManager;
+    @Column(name = "NAME_MANAGER")
+    private String nameManager;
     @Basic(optional = false)
     @Column(name = "EMAIL_MANAGER")
     private String emailManager;
     @Basic(optional = false)
-    @Column(name = "TELEFONO_MANAGER")
-    private String telefonoManager;
-    @JoinColumn(name = "CODIGO_ADMIN", referencedColumnName = "CODIGO_ADMIN")
+    @Column(name = "PHONE_MANAGER")
+    private String phoneManager;
+    @JoinColumn(name = "CODE_ADMIN", referencedColumnName = "CODE_ADMIN")
     @ManyToOne
     private AdministratorRecordMusic codigoAdmin;
     @JoinColumns({
-        @JoinColumn(name = "CODIGO_MUSICO", referencedColumnName = "CODIGO_MUSICO")
-        , @JoinColumn(name = "CODIGO_BANDA", referencedColumnName = "CODIGO_BANDA")})
+        @JoinColumn(name = "CODE_MUSICAL", referencedColumnName = "CODE_MUSICAL")
+        , @JoinColumn(name = "CODE_BAND", referencedColumnName = "CODE_BAND")})
     @ManyToOne
     private Band banda;
 
     public Manager() {
     }
 
-    public Manager(String codigoManager) {
-        this.codigoManager = codigoManager;
+    public Manager(String codeManager) {
+        this.codeManager = codeManager;
     }
 
-    public Manager(String codigoManager, String apellidoManager, String nombreManager, String emailManager, String telefonoManager) {
-        this.codigoManager = codigoManager;
-        this.apellidoManager = apellidoManager;
-        this.nombreManager = nombreManager;
+    public Manager(String codeManager, String lastNameManager, String nameManager, String emailManager, String phoneManager) {
+        this.codeManager = codeManager;
+        this.lastNameManager = lastNameManager;
+        this.nameManager = nameManager;
         this.emailManager = emailManager;
-        this.telefonoManager = telefonoManager;
+        this.phoneManager = phoneManager;
     }
 
-    public String getCodigoManager() {
-        return codigoManager;
+    public String getCodeManager() {
+        return codeManager;
     }
 
-    public void setCodigoManager(String codigoManager) {
-        this.codigoManager = codigoManager;
+    public void setCodeManager(String codeManager) {
+        this.codeManager = codeManager;
     }
 
-    public String getApellidoManager() {
-        return apellidoManager;
+    public String getLastNameManager() {
+        return lastNameManager;
     }
 
-    public void setApellidoManager(String apellidoManager) {
-        this.apellidoManager = apellidoManager;
+    public void setLastNameManager(String lastNameManager) {
+        this.lastNameManager = lastNameManager;
     }
 
-    public String getNombreManager() {
-        return nombreManager;
+    public String getNameManager() {
+        return nameManager;
     }
 
-    public void setNombreManager(String nombreManager) {
-        this.nombreManager = nombreManager;
+    public void setNameManager(String nameManager) {
+        this.nameManager = nameManager;
     }
 
     public String getEmailManager() {
@@ -107,12 +107,12 @@ public class Manager implements Serializable {
         this.emailManager = emailManager;
     }
 
-    public String getTelefonoManager() {
-        return telefonoManager;
+    public String getPhoneManager() {
+        return phoneManager;
     }
 
-    public void setTelefonoManager(String telefonoManager) {
-        this.telefonoManager = telefonoManager;
+    public void setPhoneManager(String phoneManager) {
+        this.phoneManager = phoneManager;
     }
 
     public AdministratorRecordMusic getCodigoAdmin() {
@@ -134,7 +134,7 @@ public class Manager implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codigoManager != null ? codigoManager.hashCode() : 0);
+        hash += (codeManager != null ? codeManager.hashCode() : 0);
         return hash;
     }
 
@@ -145,7 +145,7 @@ public class Manager implements Serializable {
             return false;
         }
         Manager other = (Manager) object;
-        if ((this.codigoManager == null && other.codigoManager != null) || (this.codigoManager != null && !this.codigoManager.equals(other.codigoManager))) {
+        if ((this.codeManager == null && other.codeManager != null) || (this.codeManager != null && !this.codeManager.equals(other.codeManager))) {
             return false;
         }
         return true;
@@ -153,7 +153,7 @@ public class Manager implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.ESPEmusic.model.Manager[ codigoManager=" + codigoManager + " ]";
+        return "ec.edu.espe.ESPEmusic.model.Manager[ codeManager=" + codeManager + " ]";
     }
     
 }

@@ -29,78 +29,78 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Album.findAll", query = "SELECT a FROM Album a")
-    , @NamedQuery(name = "Album.findByCodigoAlbum", query = "SELECT a FROM Album a WHERE a.codigoAlbum = :codigoAlbum")
-    , @NamedQuery(name = "Album.findByNombreAlbum", query = "SELECT a FROM Album a WHERE a.nombreAlbum = :nombreAlbum")
-    , @NamedQuery(name = "Album.findByGeneroAlbum", query = "SELECT a FROM Album a WHERE a.generoAlbum = :generoAlbum")
-    , @NamedQuery(name = "Album.findByNumeroCanciones", query = "SELECT a FROM Album a WHERE a.numeroCanciones = :numeroCanciones")})
+    , @NamedQuery(name = "Album.findByCodigoAlbum", query = "SELECT a FROM Album a WHERE a.codeAlbum = :codeAlbum")
+    , @NamedQuery(name = "Album.findByNombreAlbum", query = "SELECT a FROM Album a WHERE a.nameAlbum = :nameAlbum")
+    , @NamedQuery(name = "Album.findByGeneroAlbum", query = "SELECT a FROM Album a WHERE a.genderAlbum = :genderAlbum")
+    , @NamedQuery(name = "Album.findByNumeroCanciones", query = "SELECT a FROM Album a WHERE a.numberSongs = :numberSongs")})
 public class Album implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "CODIGO_ALBUM")
-    private String codigoAlbum;
+    @Column(name = "CODE_ALBUM")
+    private String codeAlbum;
     @Basic(optional = false)
-    @Column(name = "NOMBRE_ALBUM")
-    private String nombreAlbum;
+    @Column(name = "NAME_ALBUM")
+    private String nameAlbum;
     @Basic(optional = false)
-    @Column(name = "GENERO_ALBUM")
-    private String generoAlbum;
+    @Column(name = "GENDER_ALBUM")
+    private String genderAlbum;
     @Basic(optional = false)
-    @Column(name = "NUMERO_CANCIONES")
-    private String numeroCanciones;
+    @Column(name = "NUMBER_SONGS")
+    private String numberSongs;
     @JoinTable(name = "crea", joinColumns = {
-        @JoinColumn(name = "CODIGO_ALBUM", referencedColumnName = "CODIGO_ALBUM")}, inverseJoinColumns = {
-        @JoinColumn(name = "CODIGO_MUSICO", referencedColumnName = "CODIGO_MUSICO")
-        , @JoinColumn(name = "CODIGO_BANDA", referencedColumnName = "CODIGO_BANDA")
-        , @JoinColumn(name = "CODIGO_CANCION", referencedColumnName = "CODIGO_CANCION")})
+        @JoinColumn(name = "CODE_ALBUM", referencedColumnName = "CODE_ALBUM")}, inverseJoinColumns = {
+        @JoinColumn(name = "CODE_MUSICO", referencedColumnName = "CODE_MUSICO")
+        , @JoinColumn(name = "CODE_BANDA", referencedColumnName = "CODE_BANDA")
+        , @JoinColumn(name = "CODE_CANCION", referencedColumnName = "CODE_CANCION")})
     @ManyToMany
     private Collection<Song> cancionCollection;
 
     public Album() {
     }
 
-    public Album(String codigoAlbum) {
-        this.codigoAlbum = codigoAlbum;
+    public Album(String codeAlbum) {
+        this.codeAlbum = codeAlbum;
     }
 
-    public Album(String codigoAlbum, String nombreAlbum, String generoAlbum, String numeroCanciones) {
-        this.codigoAlbum = codigoAlbum;
-        this.nombreAlbum = nombreAlbum;
-        this.generoAlbum = generoAlbum;
-        this.numeroCanciones = numeroCanciones;
+    public Album(String codeAlbum, String nameAlbum, String genderAlbum, String numberSongs) {
+        this.codeAlbum = codeAlbum;
+        this.nameAlbum = nameAlbum;
+        this.genderAlbum = genderAlbum;
+        this.numberSongs = numberSongs;
     }
 
-    public String getCodigoAlbum() {
-        return codigoAlbum;
+    public String getCodeAlbum() {
+        return codeAlbum;
     }
 
-    public void setCodigoAlbum(String codigoAlbum) {
-        this.codigoAlbum = codigoAlbum;
+    public void setCodeAlbum(String codeAlbum) {
+        this.codeAlbum = codeAlbum;
     }
 
-    public String getNombreAlbum() {
-        return nombreAlbum;
+    public String getNameAlbum() {
+        return nameAlbum;
     }
 
-    public void setNombreAlbum(String nombreAlbum) {
-        this.nombreAlbum = nombreAlbum;
+    public void setNameAlbum(String nameAlbum) {
+        this.nameAlbum = nameAlbum;
     }
 
-    public String getGeneroAlbum() {
-        return generoAlbum;
+    public String getGenderAlbum() {
+        return genderAlbum;
     }
 
-    public void setGeneroAlbum(String generoAlbum) {
-        this.generoAlbum = generoAlbum;
+    public void setGenderAlbum(String genderAlbum) {
+        this.genderAlbum = genderAlbum;
     }
 
-    public String getNumeroCanciones() {
-        return numeroCanciones;
+    public String getNumberSongs() {
+        return numberSongs;
     }
 
-    public void setNumeroCanciones(String numeroCanciones) {
-        this.numeroCanciones = numeroCanciones;
+    public void setNumberSongs(String numberSongs) {
+        this.numberSongs = numberSongs;
     }
 
     @XmlTransient
@@ -115,7 +115,7 @@ public class Album implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codigoAlbum != null ? codigoAlbum.hashCode() : 0);
+        hash += (codeAlbum != null ? codeAlbum.hashCode() : 0);
         return hash;
     }
 
@@ -126,7 +126,7 @@ public class Album implements Serializable {
             return false;
         }
         Album other = (Album) object;
-        if ((this.codigoAlbum == null && other.codigoAlbum != null) || (this.codigoAlbum != null && !this.codigoAlbum.equals(other.codigoAlbum))) {
+        if ((this.codeAlbum == null && other.codeAlbum != null) || (this.codeAlbum != null && !this.codeAlbum.equals(other.codeAlbum))) {
             return false;
         }
         return true;
@@ -134,7 +134,7 @@ public class Album implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.ESPEmusic.model.Album[ codigoAlbum=" + codigoAlbum + " ]";
+        return "ec.edu.espe.ESPEmusic.model.Album[ codeAlbum=" + codeAlbum + " ]";
     }
     
 }

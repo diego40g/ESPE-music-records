@@ -32,10 +32,24 @@ public class MembersBandFacadeREST{// extends AbstractFacade<MiembrosBanda> {
     Querys query = new  Querys();
     
     @GET
+    @Path("allMembers")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<MembersBand> getAllMembers() {
+        return query.allMembersBand();
+    }
+    
+    @GET
     @Path("membersByBand/{band}")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<MembersBand> getAllAdmin(@PathParam("band") String band) {
+    public List<MembersBand> getMembersByBand(@PathParam("band") String band) {
         return query.membersOfBand(band);
+    }
+    
+    @GET
+    @Path("membersInstrument/{position}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<MembersBand> getMembersPosition(@PathParam("position") String position) {
+        return query.membersPosition(position);
     }
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;

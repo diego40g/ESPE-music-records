@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
+import ec.edu.espe.ESPEmusic.connection.Querys;
 import ec.edu.espe.ESPEmusic.model.Manager;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -28,11 +29,13 @@ import javax.ws.rs.core.MediaType;
 @Path("manager-recordMusic")
 public class ManagerFacadeREST{// extends AbstractFacade<Manager> {
 
+    Querys query = new  Querys();
+    
     @GET
-    @Path("manager")
+    @Path("allManager")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAllAdmin() {
-        return "Manager";
+    public List<Manager> getAllManager() {
+        return query.allManager();
     }
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;
