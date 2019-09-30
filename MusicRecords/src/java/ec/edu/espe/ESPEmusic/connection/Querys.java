@@ -43,7 +43,7 @@ public class Querys {
         AdministratorRecordMusic administratorRecordMusic = null;
         try {
                   
-            String sql = "SELECT * FROM ADMINISTRADOR_RECORD_MUSIC";
+            String sql = "SELECT * FROM ADMINISTRATOR_RECORD_MUSIC";
             PreparedStatement order = dataBase.prepareStatement(sql);
             ResultSet rs = order.executeQuery();
             
