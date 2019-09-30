@@ -12,7 +12,7 @@ import javax.ws.rs.core.Application;
  *
  * @author Pc
  */
-@javax.ws.rs.ApplicationPath("webresources")
+@javax.ws.rs.ApplicationPath("espeMusic")
 public class ApplicationConfig extends Application {
 
     @Override

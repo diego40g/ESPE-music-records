@@ -25,67 +25,73 @@ import javax.ws.rs.core.MediaType;
  * @author Pc
  */
 @Stateless
-@Path("ec.edu.espe.espemusic.model.album")
-public class AlbumFacadeREST extends AbstractFacade<Album> {
-
-    @PersistenceContext(unitName = "ESPE-record-musicPU")
-    private EntityManager em;
-
-    public AlbumFacadeREST() {
-        super(Album.class);
-    }
-
-    @POST
-    @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Album entity) {
-        super.create(entity);
-    }
-
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, Album entity) {
-        super.edit(entity);
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") String id) {
-        super.remove(super.find(id));
-    }
+@Path("album-recordMusic")
+public class AlbumFacadeREST{// extends AbstractFacade<Album> {
 
     @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Album find(@PathParam("id") String id) {
-        return super.find(id);
+    @Path("album")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getAllAdmin() {
+        return "Album";
     }
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Album> findAll() {
-        return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Album> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+//    @PersistenceContext(unitName = "ESPE-record-musicPU")
+//    private EntityManager em;
+//
+//    public AlbumFacadeREST() {
+//        super(Album.class);
+//    }
+//
+//    @POST
+//    @Override
+//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public void create(Album entity) {
+//        super.create(entity);
+//    }
+//
+//    @PUT
+//    @Path("{id}")
+//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public void edit(@PathParam("id") String id, Album entity) {
+//        super.edit(entity);
+//    }
+//
+//    @DELETE
+//    @Path("{id}")
+//    public void remove(@PathParam("id") String id) {
+//        super.remove(super.find(id));
+//    }
+//
+//    @GET
+//    @Path("{id}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public Album find(@PathParam("id") String id) {
+//        return super.find(id);
+//    }
+//
+//    @GET
+//    @Override
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<Album> findAll() {
+//        return super.findAll();
+//    }
+//
+//    @GET
+//    @Path("{from}/{to}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<Album> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+//        return super.findRange(new int[]{from, to});
+//    }
+//
+//    @GET
+//    @Path("count")
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public String countREST() {
+//        return String.valueOf(super.count());
+//    }
+//
+//    @Override
+//    protected EntityManager getEntityManager() {
+//        return em;
+//    }
     
 }

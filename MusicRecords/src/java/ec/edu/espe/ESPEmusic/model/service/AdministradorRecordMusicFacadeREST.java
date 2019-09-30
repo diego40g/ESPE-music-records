@@ -5,8 +5,11 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
+import ec.edu.espe.ESPEmusic.connection.Querys;
 import ec.edu.espe.ESPEmusic.model.AdministradorRecordMusic;
 import java.util.List;
+import javax.annotation.PreDestroy;
+import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,67 +28,75 @@ import javax.ws.rs.core.MediaType;
  * @author Pc
  */
 @Stateless
-@Path("ec.edu.espe.espemusic.model.administradorrecordmusic")
-public class AdministradorRecordMusicFacadeREST extends AbstractFacade<AdministradorRecordMusic> {
+@Path("administrator-recordMusic")
+public class AdministradorRecordMusicFacadeREST{// extends AbstractFacade<AdministradorRecordMusic> {
 
-    @PersistenceContext(unitName = "ESPE-record-musicPU")
-    private EntityManager em;
-
-    public AdministradorRecordMusicFacadeREST() {
-        super(AdministradorRecordMusic.class);
-    }
-
-    @POST
-    @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(AdministradorRecordMusic entity) {
-        super.create(entity);
-    }
-
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, AdministradorRecordMusic entity) {
-        super.edit(entity);
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") String id) {
-        super.remove(super.find(id));
-    }
-
+    Querys query = new  Querys();
     @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public AdministradorRecordMusic find(@PathParam("id") String id) {
-        return super.find(id);
+    @Path("allAdministrator")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<AdministradorRecordMusic> getAllAdmin() {
+        return query.consultaAdminJSON();
     }
+    
+//    @PersistenceContext(unitName = "ESPE-record-musicPU")
+//    private EntityManager em;
 
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<AdministradorRecordMusic> findAll() {
-        return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<AdministradorRecordMusic> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+//    public AdministradorRecordMusicFacadeREST() {
+//        super(AdministradorRecordMusic.class);
+//    }
+//
+//    @POST
+//    @Override
+//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public void create(AdministradorRecordMusic entity) {
+//        super.create(entity);
+//    }
+//
+//    @PUT
+//    @Path("{id}")
+//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public void edit(@PathParam("id") String id, AdministradorRecordMusic entity) {
+//        super.edit(entity);
+//    }
+//
+//    @DELETE
+//    @Path("{id}")
+//    public void remove(@PathParam("id") String id) {
+//        super.remove(super.find(id));
+//    }
+//
+//    @GET
+//    @Path("{id}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public AdministradorRecordMusic find(@PathParam("id") String id) {
+//        return super.find(id);
+//    }
+//
+//    @GET
+//    @Override
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<AdministradorRecordMusic> findAll() {
+//        return super.findAll();
+//    }
+//
+//    @GET
+//    @Path("{from}/{to}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<AdministradorRecordMusic> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+//        return super.findRange(new int[]{from, to});
+//    }
+//
+//    @GET
+//    @Path("count")
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public String countREST() {
+//        return String.valueOf(super.count());
+//    }
+//
+//    @Override
+//    protected EntityManager getEntityManager() {
+//        return em;
+//    }
     
 }

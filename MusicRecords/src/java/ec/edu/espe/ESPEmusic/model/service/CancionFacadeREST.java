@@ -27,94 +27,100 @@ import javax.ws.rs.core.PathSegment;
  * @author Pc
  */
 @Stateless
-@Path("ec.edu.espe.espemusic.model.cancion")
-public class CancionFacadeREST extends AbstractFacade<Cancion> {
-
-    @PersistenceContext(unitName = "ESPE-record-musicPU")
-    private EntityManager em;
-
-    private CancionPK getPrimaryKey(PathSegment pathSegment) {
-        /*
-         * pathSemgent represents a URI path segment and any associated matrix parameters.
-         * URI path part is supposed to be in form of 'somePath;codigoMusico=codigoMusicoValue;codigoBanda=codigoBandaValue;codigoCancion=codigoCancionValue'.
-         * Here 'somePath' is a result of getPath() method invocation and
-         * it is ignored in the following code.
-         * Matrix parameters are used as field names to build a primary key instance.
-         */
-        ec.edu.espe.ESPEmusic.model.CancionPK key = new ec.edu.espe.ESPEmusic.model.CancionPK();
-        javax.ws.rs.core.MultivaluedMap<String, String> map = pathSegment.getMatrixParameters();
-        java.util.List<String> codigoMusico = map.get("codigoMusico");
-        if (codigoMusico != null && !codigoMusico.isEmpty()) {
-            key.setCodigoMusico(codigoMusico.get(0));
-        }
-        java.util.List<String> codigoBanda = map.get("codigoBanda");
-        if (codigoBanda != null && !codigoBanda.isEmpty()) {
-            key.setCodigoBanda(codigoBanda.get(0));
-        }
-        java.util.List<String> codigoCancion = map.get("codigoCancion");
-        if (codigoCancion != null && !codigoCancion.isEmpty()) {
-            key.setCodigoCancion(codigoCancion.get(0));
-        }
-        return key;
-    }
-
-    public CancionFacadeREST() {
-        super(Cancion.class);
-    }
-
-    @POST
-    @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Cancion entity) {
-        super.create(entity);
-    }
-
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") PathSegment id, Cancion entity) {
-        super.edit(entity);
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") PathSegment id) {
-        ec.edu.espe.ESPEmusic.model.CancionPK key = getPrimaryKey(id);
-        super.remove(super.find(key));
-    }
+@Path("song-recordMusic")
+public class CancionFacadeREST{// extends AbstractFacade<Cancion> {
 
     @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Cancion find(@PathParam("id") PathSegment id) {
-        ec.edu.espe.ESPEmusic.model.CancionPK key = getPrimaryKey(id);
-        return super.find(key);
+    @Path("song")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getAllAdmin() {
+        return "Song";
     }
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Cancion> findAll() {
-        return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Cancion> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-    
+//    @PersistenceContext(unitName = "ESPE-record-musicPU")
+//    private EntityManager em;
+//
+//    private CancionPK getPrimaryKey(PathSegment pathSegment) {
+//        /*
+//         * pathSemgent represents a URI path segment and any associated matrix parameters.
+//         * URI path part is supposed to be in form of 'somePath;codigoMusico=codigoMusicoValue;codigoBanda=codigoBandaValue;codigoCancion=codigoCancionValue'.
+//         * Here 'somePath' is a result of getPath() method invocation and
+//         * it is ignored in the following code.
+//         * Matrix parameters are used as field names to build a primary key instance.
+//         */
+//        ec.edu.espe.ESPEmusic.model.CancionPK key = new ec.edu.espe.ESPEmusic.model.CancionPK();
+//        javax.ws.rs.core.MultivaluedMap<String, String> map = pathSegment.getMatrixParameters();
+//        java.util.List<String> codigoMusico = map.get("codigoMusico");
+//        if (codigoMusico != null && !codigoMusico.isEmpty()) {
+//            key.setCodigoMusico(codigoMusico.get(0));
+//        }
+//        java.util.List<String> codigoBanda = map.get("codigoBanda");
+//        if (codigoBanda != null && !codigoBanda.isEmpty()) {
+//            key.setCodigoBanda(codigoBanda.get(0));
+//        }
+//        java.util.List<String> codigoCancion = map.get("codigoCancion");
+//        if (codigoCancion != null && !codigoCancion.isEmpty()) {
+//            key.setCodigoCancion(codigoCancion.get(0));
+//        }
+//        return key;
+//    }
+//
+//    public CancionFacadeREST() {
+//        super(Cancion.class);
+//    }
+//
+//    @POST
+//    @Override
+//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public void create(Cancion entity) {
+//        super.create(entity);
+//    }
+//
+//    @PUT
+//    @Path("{id}")
+//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public void edit(@PathParam("id") PathSegment id, Cancion entity) {
+//        super.edit(entity);
+//    }
+//
+//    @DELETE
+//    @Path("{id}")
+//    public void remove(@PathParam("id") PathSegment id) {
+//        ec.edu.espe.ESPEmusic.model.CancionPK key = getPrimaryKey(id);
+//        super.remove(super.find(key));
+//    }
+//
+//    @GET
+//    @Path("{id}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public Cancion find(@PathParam("id") PathSegment id) {
+//        ec.edu.espe.ESPEmusic.model.CancionPK key = getPrimaryKey(id);
+//        return super.find(key);
+//    }
+//
+//    @GET
+//    @Override
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<Cancion> findAll() {
+//        return super.findAll();
+//    }
+//
+//    @GET
+//    @Path("{from}/{to}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<Cancion> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+//        return super.findRange(new int[]{from, to});
+//    }
+//
+//    @GET
+//    @Path("count")
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public String countREST() {
+//        return String.valueOf(super.count());
+//    }
+//
+//    @Override
+//    protected EntityManager getEntityManager() {
+//        return em;
+//    }
+//    
 }

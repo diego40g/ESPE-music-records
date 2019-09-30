@@ -25,67 +25,73 @@ import javax.ws.rs.core.MediaType;
  * @author Pc
  */
 @Stateless
-@Path("ec.edu.espe.espemusic.model.miembrosbanda")
-public class MiembrosBandaFacadeREST extends AbstractFacade<MiembrosBanda> {
-
-    @PersistenceContext(unitName = "ESPE-record-musicPU")
-    private EntityManager em;
-
-    public MiembrosBandaFacadeREST() {
-        super(MiembrosBanda.class);
-    }
-
-    @POST
-    @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(MiembrosBanda entity) {
-        super.create(entity);
-    }
-
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, MiembrosBanda entity) {
-        super.edit(entity);
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") String id) {
-        super.remove(super.find(id));
-    }
+@Path("membersBand-recordMusic")
+public class MiembrosBandaFacadeREST{// extends AbstractFacade<MiembrosBanda> {
 
     @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public MiembrosBanda find(@PathParam("id") String id) {
-        return super.find(id);
+    @Path("membersBand")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getAllAdmin() {
+        return "Members Band";
     }
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<MiembrosBanda> findAll() {
-        return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<MiembrosBanda> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-    
+//    @PersistenceContext(unitName = "ESPE-record-musicPU")
+//    private EntityManager em;
+//
+//    public MiembrosBandaFacadeREST() {
+//        super(MiembrosBanda.class);
+//    }
+//
+//    @POST
+//    @Override
+//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public void create(MiembrosBanda entity) {
+//        super.create(entity);
+//    }
+//
+//    @PUT
+//    @Path("{id}")
+//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public void edit(@PathParam("id") String id, MiembrosBanda entity) {
+//        super.edit(entity);
+//    }
+//
+//    @DELETE
+//    @Path("{id}")
+//    public void remove(@PathParam("id") String id) {
+//        super.remove(super.find(id));
+//    }
+//
+//    @GET
+//    @Path("{id}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public MiembrosBanda find(@PathParam("id") String id) {
+//        return super.find(id);
+//    }
+//
+//    @GET
+//    @Override
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<MiembrosBanda> findAll() {
+//        return super.findAll();
+//    }
+//
+//    @GET
+//    @Path("{from}/{to}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<MiembrosBanda> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+//        return super.findRange(new int[]{from, to});
+//    }
+//
+//    @GET
+//    @Path("count")
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public String countREST() {
+//        return String.valueOf(super.count());
+//    }
+//
+//    @Override
+//    protected EntityManager getEntityManager() {
+//        return em;
+//    }
+//    
 }

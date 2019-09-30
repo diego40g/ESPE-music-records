@@ -5,6 +5,15 @@
  */
 package ec.edu.espe.ESPEmusic.connection;
 
+import ec.edu.espe.ESPEmusic.model.AdministradorRecordMusic;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author galle
@@ -12,9 +21,36 @@ package ec.edu.espe.ESPEmusic.connection;
 public class Querys {
     Connection connectionBD;
     java.sql.Connection dataBase;
+    private final List<AdministradorRecordMusic> listAdmin;
     
     public Querys(){
         connectionBD = new Connection();
         dataBase = connectionBD.connect();
+        listAdmin = new ArrayList<AdministradorRecordMusic>();
+    }
+    
+    public List<AdministradorRecordMusic> consultaAdminJSON(){
+        AdministradorRecordMusic administratorRecordMusic = null;
+        try {
+                  
+            String sql = "SELECT * FROM ADMINISTRADOR_RECORD_MUSIC";
+            PreparedStatement order = dataBase.prepareStatement(sql);
+            ResultSet rs = order.executeQuery();
+            
+            while (rs.next()){
+                administratorRecordMusic = new AdministradorRecordMusic();
+                administratorRecordMusic.setCodigoAdmin(rs.getString("CODIGO_ADMIN"));               
+                administratorRecordMusic.setApellidoAdmin(rs.getString("APELLIDO_ADMIN"));
+                administratorRecordMusic.setNombreAdmin(rs.getString("NOMBRE_ADMIN"));
+                administratorRecordMusic.setEmailAdmin(rs.getString("EMAIL_ADMIN"));
+                administratorRecordMusic.setTelefonoAdmin(rs.getString("TELEFONO_ADMIN"));
+                listAdmin.add(administratorRecordMusic);
+            }            
+            order.close();
+            order = null;            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdministradorRecordMusic.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        return listAdmin;           
     }
 }

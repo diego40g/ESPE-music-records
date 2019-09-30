@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author galle
  */
 public class Connection {
-    private static final String db = "univers";
+    private static final String db = "recordMusic";
     private static final String URL = "jdbc:mariadb://localhost:3307/" + db;
     private static final String USERNAME = "root";
     private static final String PASSSWORD = "root";
