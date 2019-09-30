@@ -28,83 +28,83 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MiembrosBanda.findAll", query = "SELECT m FROM MiembrosBanda m")
-    , @NamedQuery(name = "MiembrosBanda.findByCodigoMusico", query = "SELECT m FROM MiembrosBanda m WHERE m.codigoMusico = :codigoMusico")
-    , @NamedQuery(name = "MiembrosBanda.findByApellido", query = "SELECT m FROM MiembrosBanda m WHERE m.apellido = :apellido")
-    , @NamedQuery(name = "MiembrosBanda.findByNombre", query = "SELECT m FROM MiembrosBanda m WHERE m.nombre = :nombre")
-    , @NamedQuery(name = "MiembrosBanda.findByCargo", query = "SELECT m FROM MiembrosBanda m WHERE m.cargo = :cargo")
+    , @NamedQuery(name = "MiembrosBanda.findByCodigoMusico", query = "SELECT m FROM MiembrosBanda m WHERE m.codeMusical = :codeMusical")
+    , @NamedQuery(name = "MiembrosBanda.findByApellido", query = "SELECT m FROM MiembrosBanda m WHERE m.lastName = :lastName")
+    , @NamedQuery(name = "MiembrosBanda.findByNombre", query = "SELECT m FROM MiembrosBanda m WHERE m.name = :name")
+    , @NamedQuery(name = "MiembrosBanda.findByCargo", query = "SELECT m FROM MiembrosBanda m WHERE m.position = :position")
     , @NamedQuery(name = "MiembrosBanda.findByEmail", query = "SELECT m FROM MiembrosBanda m WHERE m.email = :email")
-    , @NamedQuery(name = "MiembrosBanda.findByTelefono", query = "SELECT m FROM MiembrosBanda m WHERE m.telefono = :telefono")})
+    , @NamedQuery(name = "MiembrosBanda.findByTelefono", query = "SELECT m FROM MiembrosBanda m WHERE m.phone = :phone")})
 public class MembersBand implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "CODIGO_MUSICO")
-    private String codigoMusico;
+    @Column(name = "CODE_MUSICAL")
+    private String codeMusical;
     @Basic(optional = false)
-    @Column(name = "APELLIDO")
-    private String apellido;
+    @Column(name = "LASTNAME")
+    private String lastName;
     @Basic(optional = false)
-    @Column(name = "NOMBRE")
-    private String nombre;
+    @Column(name = "NAME")
+    private String name;
     @Basic(optional = false)
-    @Column(name = "CARGO")
-    private String cargo;
+    @Column(name = "POSITION")
+    private String position;
     @Basic(optional = false)
     @Column(name = "EMAIL")
     private String email;
     @Basic(optional = false)
-    @Column(name = "TELEFONO")
-    private String telefono;
+    @Column(name = "PHONE")
+    private String phone;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "miembrosBanda")
     private Collection<Band> bandaCollection;
 
     public MembersBand() {
     }
 
-    public MembersBand(String codigoMusico) {
-        this.codigoMusico = codigoMusico;
+    public MembersBand(String codeMusical) {
+        this.codeMusical = codeMusical;
     }
 
-    public MembersBand(String codigoMusico, String apellido, String nombre, String cargo, String email, String telefono) {
-        this.codigoMusico = codigoMusico;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.cargo = cargo;
+    public MembersBand(String codeMusical, String lastName, String name, String position, String email, String phone) {
+        this.codeMusical = codeMusical;
+        this.lastName = lastName;
+        this.name = name;
+        this.position = position;
         this.email = email;
-        this.telefono = telefono;
+        this.phone = phone;
     }
 
-    public String getCodigoMusico() {
-        return codigoMusico;
+    public String getCodeMusical() {
+        return codeMusical;
     }
 
-    public void setCodigoMusico(String codigoMusico) {
-        this.codigoMusico = codigoMusico;
+    public void setCodeMusical(String codeMusical) {
+        this.codeMusical = codeMusical;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCargo() {
-        return cargo;
+    public String getPosition() {
+        return position;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getEmail() {
@@ -115,12 +115,12 @@ public class MembersBand implements Serializable {
         this.email = email;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @XmlTransient
@@ -135,7 +135,7 @@ public class MembersBand implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codigoMusico != null ? codigoMusico.hashCode() : 0);
+        hash += (codeMusical != null ? codeMusical.hashCode() : 0);
         return hash;
     }
 
@@ -146,7 +146,7 @@ public class MembersBand implements Serializable {
             return false;
         }
         MembersBand other = (MembersBand) object;
-        if ((this.codigoMusico == null && other.codigoMusico != null) || (this.codigoMusico != null && !this.codigoMusico.equals(other.codigoMusico))) {
+        if ((this.codeMusical == null && other.codeMusical != null) || (this.codeMusical != null && !this.codeMusical.equals(other.codeMusical))) {
             return false;
         }
         return true;
@@ -154,7 +154,7 @@ public class MembersBand implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.ESPEmusic.model.MiembrosBanda[ codigoMusico=" + codigoMusico + " ]";
+        return "ec.edu.espe.ESPEmusic.model.MiembrosBanda[ codeMusical=" + codeMusical + " ]";
     }
     
 }

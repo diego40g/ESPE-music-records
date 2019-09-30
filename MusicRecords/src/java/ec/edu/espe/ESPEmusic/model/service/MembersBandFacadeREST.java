@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.ESPEmusic.model.service;
 
+import ec.edu.espe.ESPEmusic.connection.Querys;
 import ec.edu.espe.ESPEmusic.model.MembersBand;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -27,12 +28,14 @@ import javax.ws.rs.core.MediaType;
 @Stateless
 @Path("membersBand-recordMusic")
 public class MembersBandFacadeREST{// extends AbstractFacade<MiembrosBanda> {
-
+    
+    Querys query = new  Querys();
+    
     @GET
-    @Path("membersBand")
+    @Path("membersByBand/{band}")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAllAdmin() {
-        return "Members Band";
+    public List<MembersBand> getAllAdmin(@PathParam("band") String band) {
+        return query.membersOfBand(band);
     }
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
 //    private EntityManager em;

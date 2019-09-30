@@ -32,11 +32,12 @@ import javax.ws.rs.core.MediaType;
 public class AdministratorRecordMusicFacadeREST{// extends AbstractFacade<AdministradorRecordMusic> {
 
     Querys query = new  Querys();
+    
     @GET
     @Path("allAdministrator")
     @Produces({MediaType.APPLICATION_JSON})
     public List<AdministratorRecordMusic> getAllAdmin() {
-        return query.consultaAdminJSON();
+        return query.allAdmin();
     }
     
 //    @PersistenceContext(unitName = "ESPE-record-musicPU")
